@@ -15,11 +15,76 @@
 
 / {
     behaviors {
-        toggleBacklight: toggleBacklight {
+        muteTapToogleLights: muteTapToogleLights {
             compatible = "zmk,behavior-tap-dance";
-            label = "TOGGLEBACKLIGHT";
+            label = "MUTETAPTOOGLELIGHTS";
             #binding-cells = <0>;
-            bindings = <&kp C_MUTE>, <&kp C_BACKLIGHT_TOGGLE>;
+            bindings = <&kp C_MUTE>, <&rgb_ug RGB_TOG>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        left_parentheses {
+            bindings = <&kp LEFT_PARENTHESIS>;
+            key-positions = <18 19>;
+        };
+
+        right_parenthesis {
+            bindings = <&kp RIGHT_PARENTHESIS>;
+            key-positions = <22 23>;
+        };
+
+        left_bracket {
+            bindings = <&kp LEFT_BRACKET>;
+            key-positions = <33 32>;
+        };
+
+        right_bracket {
+            bindings = <&kp RIGHT_BRACKET>;
+            key-positions = <34 35>;
+        };
+
+        left_brace {
+            bindings = <&kp LEFT_BRACE>;
+            key-positions = <4 5>;
+        };
+
+        right_brace {
+            bindings = <&kp RIGHT_BRACE>;
+            key-positions = <8 9>;
+        };
+
+        enter_hr {
+            bindings = <&kp ENTER>;
+            key-positions = <23 24 25>;
+        };
+
+        delete_previous_word {
+            bindings = <&delete_previous_word>;
+            key-positions = <16 17>;
+        };
+
+        delete_next_word {
+            bindings = <&delete_next_word>;
+            key-positions = <17 18>;
+        };
+    };
+
+    macros {
+        delete_next_word: delete_next_word {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LS(RIGHT)) &kp DELETE>;
+            label = "DELETE_NEXT_WORD";
+        };
+
+        delete_previous_word: delete_previous_word {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LS(LEFT)) &kp BACKSPACE>;
+            label = "DELETE_PREVIOUS_WORD";
         };
     };
 
@@ -36,10 +101,10 @@
             //                    | GUI | LWR | SPC |               | ENT | RSE  | ALT |
 
             bindings = <
-&kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T      &rgb_ug RGB_TOG  &kp C_PP  &kp Y    &kp U  &kp I      &kp O    &kp P     &kp BSPC
-&kp LCTRL  &kp A  &kp S  &kp D     &kp F  &kp G      &kp LALT         &kp RALT  &kp H    &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z  &kp X  &kp C     &kp V  &kp B                                 &kp N    &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
-                         &kp LGUI  &mo 1  &kp SPACE                             &kp RET  &mo 2  &kp RALT
+&kp TAB       &kp Q             &kp W  &kp E     &kp R  &kp T      &muteTapToogleLights  &kp C_PP  &kp Y    &kp U  &kp I      &kp O    &kp P                      &kp BSPC
+&lt 1 ESCAPE  &mt LEFT_SHIFT A  &kp S  &kp D     &kp F  &kp G      &kp LALT              &kp RALT  &kp H    &kp J  &kp K      &kp L    &mt RIGHT_SHIFT SEMICOLON  &kp SQT
+&kp LSHFT     &kp Z             &kp X  &kp C     &kp V  &kp B                                      &kp N    &kp M  &kp COMMA  &kp DOT  &kp FSLH                   &kp ESC
+                                       &kp LGUI  &mo 1  &kp SPACE                                  &kp RET  &mo 2  &kp RALT
             >;
         };
 
@@ -74,66 +139,6 @@
 &kp LCTRL  &trans    &trans  &trans    &trans    &trans     &kp LALT   &kp RALT   &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
 &kp LSHFT  &trans    &trans  &trans    &trans    &trans                           &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
                              &kp LGUI  &trans    &kp SPACE                        &kp RET    &trans     &kp RALT
-            >;
-        };
-
-        extra_layer_1 {
-            display-name = "EXTRA 1";
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans                  &trans  &trans  &trans
-            >;
-        };
-
-        extra_layer_2 {
-            display-name = "EXTRA 2";
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans                  &trans  &trans  &trans
-            >;
-        };
-
-        extra_layer_3 {
-            display-name = "EXTRA 3";
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans                  &trans  &trans  &trans
-            >;
-        };
-
-        extra_layer_4 {
-            display-name = "EXTRA 4";
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans                  &trans  &trans  &trans
-            >;
-        };
-
-        extra_layer_5 {
-            display-name = "EXTRA 5";
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans                  &trans  &trans  &trans
-            >;
-        };
-
-        extra_layer_6 {
-            display-name = "EXTRA 6";
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans                  &trans  &trans  &trans
             >;
         };
     };
