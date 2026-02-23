@@ -179,7 +179,7 @@
             bindings = <
 &kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5     &kp LCTRL  &kp RCTRL  &kp N6        &kp N7           &kp N8           &kp N9           &kp N0     &kp EQUAL
 &none      &none   &none   &none   &none   &none      &kp LALT   &kp RALT   &kp ASTERISK  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp PLUS   &kp BACKSLASH
-&kp LSHFT  &none   &none   &none   &none   &none                            &kp SLASH     &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp MINUS  &none
+&kp LSHFT  &none   &none   &none   &none   &none                            &kp SLASH     &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp MINUS  &kp RIGHT_SHIFT
                            &none   &trans  &kp SPACE                        &kp ENTER     &kp KP_N0        &kp KP_DOT
             >;
         };
@@ -195,9 +195,9 @@
 
             bindings = <
 &kp TILDE  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT  &kp LCTRL  &kp RCTRL  &kp CARET  &kp AMPS  &kp ASTRK  &kp LPAR  &kp RPAR  &kp PLUS
-&none      &trans    &trans  &trans    &trans    &trans     &kp LALT   &kp RALT   &none      &none     &none      &none     &none     &none
-&kp LSHFT  &trans    &trans  &trans    &trans    &trans                           &none      &none     &none      &none     &none     &kp RIGHT_SHIFT
-                             &none     &trans    &kp SPACE                        &kp RET    &trans    &none
+&none      &none     &none   &none     &none     &none      &kp LALT   &kp RALT   &none      &none     &none      &none     &none     &none
+&kp LSHFT  &none     &none   &none     &none     &none                            &none      &none     &none      &none     &none     &kp RIGHT_SHIFT
+                             &none     &none     &kp SPACE                        &kp RET    &trans    &none
             >;
         };
 
