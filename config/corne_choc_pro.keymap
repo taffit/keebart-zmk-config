@@ -115,6 +115,11 @@
             bindings = <&mo 5>;
             key-positions = <44 45>;
         };
+
+        Escape_RH {
+            bindings = <&kp ESCAPE>;
+            key-positions = <23 24>;
+        };
     };
 
     macros {
